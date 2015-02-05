@@ -1,0 +1,9 @@
+bower_components
+dist
+target
+node_modules
+.project
+.settings
+.tern-project
+cordova
+cordova/config.xml

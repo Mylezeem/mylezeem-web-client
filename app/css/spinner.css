@@ -1,0 +1,27 @@
+/* 	Spinner css stylesheet 
+	See 'loaderUtils.js' to know how to use it
+*/
+
+/* Transparent background color to disable action on page */
+#loading-ws-background-page {
+	background-color: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	display:none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+}
+#loading-ws-bar {	
+    border-radius: 2px;
+	display:none;
+    height: 100px;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -50px;
+    position: fixed;
+    top: 50%;
+    width: 150px;
+    z-index: 10001;
+}

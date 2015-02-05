@@ -1,0 +1,204 @@
+{
+	"app": "app",
+	"tmp": "tmp",
+	"target": "target",
+	"dist": "dist",
+	"resources": "resources",
+	"hooks": "hooks",
+	"merges": "merges",
+	"crosswalk": "crosswalk-cordova-10.39.235.15-arm",
+	"jshint": true,
+	"cordova": {
+		"dist": "cordova",
+		"id": "fr.lalloue.geoffrey.mylezeem",
+		"name": "Mylezeem",
+		"version": "1.0",
+		"versionCode": "1",
+		"plugins": [
+			"../plugins-git/cordova-plugin-splashscreen-master",
+			"../plugins-git/cordova-plugin-statusbar-r0.1.7",
+			"../plugins-git/cordova-plugin-network-information-r0.2.14"
+		],
+		"preferences": [
+			{
+				"name": "Orientation",
+				"value": "default"
+			},
+			{
+				"name": "SplashScreen",
+				"value": "screen"
+			},
+			{
+				"name": "SplashScreenDelay",
+				"value": "15000"
+			},
+			{
+				"name": "AutoHideSplashScreen",
+				"value": "false"
+			}
+		],
+		"access": [
+			{
+				"attributes": [
+					{
+						"name": "origin",
+						"value": "*"
+					}
+				],
+				"_comment": "DONT'REMOVE THIS ATTRIBUTE"
+			}
+		],
+		"_features": [
+			{
+				
+			}
+		],
+		"icons": {
+			"ios": {
+				"src": "ios/icon.png",
+				"dest": [
+					"res/ios/icon.png",
+					"res/ios/icon@2x.png",
+					"res/ios/icon-small.png",
+					"res/ios/icon-small@2x.png",
+					"res/ios/icon-40.png",
+					"res/ios/icon-40@2x.png",
+					"res/ios/icon-50.png",
+					"res/ios/icon-50@2x.png",
+					"res/ios/icon-60.png",
+					"res/ios/icon-60@2x.png",
+					"res/ios/icon-72.png",
+					"res/ios/icon-72@2x.png",
+					"res/ios/icon-76.png",
+					"res/ios/icon-76@2x.png",
+					"res/ios/icon-90.png",
+					"res/ios/icon-90@2x.png"
+				],
+				"destSizes": [
+					"57x57",
+					"114x114",
+					"29x29",
+					"58x58",
+					"40x40",
+					"80x80",
+					"50x50",
+					"100x100",
+					"60x60",
+					"120x120",
+					"72x72",
+					"144x144",
+					"76x76",
+					"152x152",
+					"90x90",
+					"180x180"
+				]
+			},
+			"android": {
+				"src": "android/icon.png",
+				"dest": [
+					"res/android/icon-ldpi.png",
+					"res/android/icon-mdpi.png",
+					"res/android/icon-hdpi.png",
+					"res/android/icon-xhdpi.png",
+					"res/android/icon-xxhdpi.png"
+				],
+				"destSizes": [
+					"36x36",
+					"48x48",
+					"72x72",
+					"96x96",
+					"144x144"
+				]
+			}
+		},
+		"splashs": {
+			"ios": {
+				"dest": [
+					"res/ios/screen.png",
+					"res/ios/screen@2x.png",
+					"res/ios/screen5.png",
+					"res/ios/screen6.png",
+					"res/ios/screen6plus.png",
+					"res/ios/screen-landscape.png",
+					"res/ios/screen@2x-landscap.png",
+					"res/ios/screen5-landscap.png",
+					"res/ios/screen6-landscap.png",
+					"res/ios/screen6plus-landscap.png"
+				],
+				"destSizes": [
+					"320x480",
+					"640x960",
+					"640x1136",
+					"750x1334",
+					"1080x1920",
+					"480x320",
+					"960x640",
+					"1136x640",
+					"1334x750",
+					"1920x1080"
+				]
+			},
+			"android": {
+				"dest": [
+					"res/android/screen-portrait.png",
+					"res/android/screen-portrait.png",
+					"res/android/screen-portrait.png",
+					"res/android/screen-portrait.png",
+					"res/android/screen-portrait.png",
+					"res/android/screen-landscape.png",
+					"res/android/screen-landscape.png",
+					"res/android/screen-landscape.png",
+					"res/android/screen-landscape.png",
+					"res/android/screen-landscape.png"
+				],
+				"destSizes": [
+					"port-ldpi",
+					"port-mdpi",
+					"port-hdpi",
+					"port-xhdpi",
+					"port-xxhdpi",
+					"land-ldpi",
+					"land-mdpi",
+					"land-hdpi",
+					"land-xhdpi",
+					"land-xxhdpi"
+				]
+			}
+		}
+	},
+	"_proxies": [
+		{
+			"context": "",
+			"host": "",
+			"port": 80,
+			"changeOrigin": true,
+			"rewrite": {
+				"": ""
+			}
+		}
+	],
+	"replaceTarget": {
+		"src": [
+			"js/config.js"
+		],
+		"overwrite": true,
+		"replacements": [
+			{
+				"from": "ENABLE_DEBUG",
+				"to": "true"
+			}
+		]
+	},
+	"replaceDist": {
+		"src": [
+			"js/config.js"
+		],
+		"overwrite": true,
+		"replacements": [
+			{
+				"from": "ENABLE_DEBUG",
+				"to": "false"
+			}
+		]
+	}
+}
