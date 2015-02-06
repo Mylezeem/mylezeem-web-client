@@ -12,8 +12,6 @@ angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem
 .config(['$routeProvider','$httpProvider','LoggerProvider',function($routeProvider, $httpProvider, LoggerProvider) {
 	// Enable/Disable logs
 	LoggerProvider.enabled(CONFIG.DEBUG);
-	// Http interceptor
-	$httpProvider.interceptors.push('HttpInterceptor');
 	// App pages
 	$routeProvider.when('/home', {
 		templateUrl : 'partials/home.html',
