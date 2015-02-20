@@ -5,7 +5,8 @@
 var CONFIG = {
 	// Replace by 'true'(Target), 'false'(Dist) with grunt replace plugin
 	DEBUG : 'ENABLE_DEBUG',
-	LOCAL_STORAGE_MAX_MINUTES_TO_CACHE : '60'
+	LOCAL_STORAGE_MAX_MINUTES_TO_CACHE : '60',
+	TIME_TO_DRAG : 500
 };
 
 var UICONFIG = {

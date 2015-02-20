@@ -53,6 +53,12 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		$rootScope.actionMenuWidth = Math.floor(actionMenuWidth);
 	};
 
+	$rootScope.getPosition = function(i) {
+		var x = 0;
+		var y = i * 85;
+		return [x,y,1];
+	};
+
 	$rootScope.drawScreen();
 
 	return null;

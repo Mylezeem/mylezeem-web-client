@@ -3,33 +3,33 @@
 	<fa-header-footer-layout fa-options="headerFooterLayoutOptions">
 	
 		<!-- HEADER -->
-		<fa-surface fa-background-color="'#dc322f'">
-      		Header
+		<fa-surface>
+      		<ng-include src=" 'partials/header.html' "></ng-include>
     	</fa-surface>
 
 		<!-- CONTENT -->
   		<fa-header-footer-layout fa-options="contentLayoutOptions">
 	
 			<!-- TOOL MENU -->
-			<fa-surface fa-background-color="'#FFD100'">
-      			Tool menu
+			<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
+				<ng-include src=" 'partials/tools.html' "></ng-include>
     		</fa-surface>
 
 			<!-- CONTENT -->
-  			<fa-surface fa-background-color="'#268bd2'">
-  	  			Content
+  			<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
+  	  			<ng-include src=" 'partials/content.html' "></ng-include>
 	  		</fa-surface>
 
 			<!-- ACTION MENU -->
-			<fa-surface fa-background-color="'#859900'">
-		  		Action menu
+			<fa-surface>
+		  		<ng-include src=" 'partials/actions.html' "></ng-include>
 	  		</fa-surface>
 	  	
   		</fa-header-footer-layout>
 
 		<!-- FOOTER -->
-		<fa-surface fa-background-color="'#D82BCD'">
-		  	Footer
+		<fa-surface>
+			<ng-include src=" 'partials/footer.html' "></ng-include>
 	  	</fa-surface>
 	  	
   	</fa-header-footer-layout>

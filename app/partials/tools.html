@@ -1,0 +1,17 @@
+<fa-app id="tool">
+	<fa-view ng-repeat="tool in tools">
+		<fa-modifier 	fa-size="[toolMenuWidth, 80]"
+				 		fa-transform="tool.transform()">
+			 <fa-surface fa-background-color="'#5194C6'" fa-touchstart="tool.touchStart($event)" fa-touchend="tool.touchEnd($event)" ng-class="tool.classname">
+			 	<div class="tool-content">
+			 		<div class="tool-title">
+			   			{{tool.title}}
+			   		</div>
+			   		<div class="tool-image">
+		   				<img src="{{tool.image}}" alt="{{tool.description}}" style="width:{{toolMenuWidth * 0.8}}px;height:{{toolMenuWidth * 0.8}}px">
+			   		</div>
+			   	</div>
+			 </fa-surface>
+		</fa-modifier>
+	</fa-view>
+</fa-app> 
