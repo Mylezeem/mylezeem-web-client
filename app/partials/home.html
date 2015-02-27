@@ -1,45 +1,23 @@
-<fa-app id="home" resize>
+<div id="home" resize>
 
-	<fa-header-footer-layout fa-options="headerFooterLayoutOptions">
+	<!-- HEADER -->
+	<ng-include id="header" src=" 'partials/header.html' " style="height:{{headerHeight}}px;"></ng-include>
+
+	<!-- PAGE -->
+	<div id="content">
 	
-		<!-- HEADER -->
-		<fa-surface>
-      		<ng-include src=" 'partials/header.html' "></ng-include>
-    	</fa-surface>
-
+		<!-- TOOL MENU -->
+		<ng-include id="tools-menu" src=" 'partials/tools.html' " style="width:{{toolsMenuWidth}}px;"></ng-include>
+		
 		<!-- CONTENT -->
-  		<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
-  			<fa-app>
+		<ng-include id="draw-table" src=" 'partials/content.html' "></ng-include>
+		
+		<!-- ACTION MENU -->
+		<ng-include id="actions-menu" src=" 'partials/actions.html' " style="width:{{actionsMenuWidth}}px;"></ng-include>
 	
-				<!-- TOOL MENU -->
-				<fa-modifier fa-size="[toolMenuWidth, toolMenuHeight]">
-					<fa-surface >
-						<ng-include src=" 'partials/tools.html' "></ng-include>
-		    		</fa-surface>
-	    		</fa-modifier>
-	
-				<!-- CONTENT -->
-				<fa-modifier fa-size="[contentWidth, contentHeight]" fa-translate="[toolMenuWidth,0,0]">
-		  			<fa-surface>
-		  	  			<ng-include src=" 'partials/content.html' "></ng-include>
-			  		</fa-surface>
-		  		</fa-modifier>
-	
-				<!-- ACTION MENU -->
-				<fa-modifier fa-size="[actionMenuWidth, actionMenuHeight]" fa-translate="[windowWidth - actionMenuWidth,0,0]">
-					<fa-surface>
-				  		<ng-include src=" 'partials/actions.html' "></ng-include>
-			  		</fa-surface>
-		  		</fa-modifier>
-	  		
-	  		</fa-app>
-  		</fa-surface>
+	</div>
 
-		<!-- FOOTER -->
-		<fa-surface>
-			<ng-include src=" 'partials/footer.html' "></ng-include>
-	  	</fa-surface>
-	  	
-  	</fa-header-footer-layout>
+	<!-- FOOTER -->
+	<ng-include id="footer" src=" 'partials/footer.html' " style="height:{{footerHeight}}px;"></ng-include>
   
-</fa-app> 
+</div> 

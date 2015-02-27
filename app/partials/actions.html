@@ -1,17 +1,10 @@
-<fa-app id="action">
-	<fa-view ng-repeat="action in actions">
-		<fa-modifier 	fa-translate="[0, $index * 85, 0]"
-						fa-size="[actionMenuWidth, 80]">
-			 <fa-surface fa-background-color="'#5194C6'" ng-class="action.classname">
-			 	<div class="action-content">
-			 		<div class="action-title">
-			   			{{action.title}}
-			   		</div>
-			   		<div class="action-image">
-		   				<img src="{{action.image}}" alt="{{action.description}}" style="width:{{actionMenuWidth * 0.8}}px;height:{{actionMenuWidth * 0.8}}px">
-			   		</div>
-			   	</div>
-			 </fa-surface>
-		</fa-modifier>
-	</fa-view>
-</fa-app> 
+<div ng-repeat="action in actions">
+ 	<div class="action-content">
+ 		<div class="action-title">
+   			{{action.title}}
+   		</div>
+   		<div class="action-image">
+  				<img src="{{action.image}}" alt="{{action.description}}" style="width:{{actionsMenuWidth * 0.8}}px;height:{{actionsMenuWidth * 0.8}}px">
+   		</div>
+   	</div>
+</div>

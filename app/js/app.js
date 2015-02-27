@@ -7,7 +7,7 @@ var controllers = angular.module('mylezeem.controllers', []);
 var services = angular.module('mylezeem.services', []);
 var providers = angular.module('mylezeem.providers', []);
 
-angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem.directives','mylezeem.providers','famous.angular','ngRoute'])
+angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem.directives','mylezeem.providers','ngRoute'])
 
 .config(['$routeProvider','$httpProvider','LoggerProvider',function($routeProvider, $httpProvider, LoggerProvider) {
 	// Enable/Disable logs
