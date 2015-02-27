@@ -1,5 +1,5 @@
 'use strict';
-/* global controllers, CONFIG, TOOLSLIST, Tool */
+/* global controllers, CONFIG, TOOLSLIST, Tool, ACTIONSLIST, Action */
 
 /* Home Controllers */
 controllers.controller('HomeCtrl', ['$scope','$famous','UiHelper','Logger',function($scope, $famous, UiHelper, Logger) {
