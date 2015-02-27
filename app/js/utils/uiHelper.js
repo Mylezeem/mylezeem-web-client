@@ -51,6 +51,15 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		}
 		$rootScope.toolMenuWidth = Math.floor(toolMenuWidth);
 		$rootScope.actionMenuWidth = Math.floor(actionMenuWidth);
+
+		var contentHeight = $rootScope.windowHeight - $rootScope.headerHeight - $rootScope.footerHeight;
+
+		$rootScope.toolMenuHeight = contentHeight;
+		$rootScope.actionMenuHeight = contentHeight;
+
+		// Content
+		$rootScope.contentHeight = contentHeight;
+		$rootScope.contentWidth = $rootScope.windowWidth - $rootScope.toolMenuWidth - $rootScope.actionMenuWidth;
 	};
 
 	$rootScope.getPosition = function(i) {

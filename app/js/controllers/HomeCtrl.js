@@ -48,18 +48,10 @@ controllers.controller('HomeCtrl', ['$scope','$famous','UiHelper','Logger',funct
 		footerSize : $scope.footerHeight
 	};
 
-	$scope.contentLayoutOptions = {
-		direction : 0,
-		headerSize : $scope.toolMenuWidth,
-		footerSize : $scope.actionMenuWidth
-	};
-
 	$scope.onResize = function() {
 		$scope.drawScreen();
 		$scope.headerFooterLayoutOptions.headerSize = $scope.headerHeight;
 		$scope.headerFooterLayoutOptions.footerSize = $scope.footerHeight;
-		$scope.contentLayoutOptions.headerSize = $scope.toolMenuWidth;
-		$scope.contentLayoutOptions.footerSize = $scope.actionMenuWidth;
 	};
 
 	/** ************* */

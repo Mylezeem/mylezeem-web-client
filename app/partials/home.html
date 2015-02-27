@@ -8,24 +8,32 @@
     	</fa-surface>
 
 		<!-- CONTENT -->
-  		<fa-header-footer-layout fa-options="contentLayoutOptions">
+  		<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
+  			<fa-app>
 	
-			<!-- TOOL MENU -->
-			<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
-				<ng-include src=" 'partials/tools.html' "></ng-include>
-    		</fa-surface>
-
-			<!-- CONTENT -->
-  			<fa-surface fa-touchmove="touchMove($event)" fa-pipe-to="myEventHandler">
-  	  			<ng-include src=" 'partials/content.html' "></ng-include>
-	  		</fa-surface>
-
-			<!-- ACTION MENU -->
-			<fa-surface>
-		  		<ng-include src=" 'partials/actions.html' "></ng-include>
-	  		</fa-surface>
-	  	
-  		</fa-header-footer-layout>
+				<!-- TOOL MENU -->
+				<fa-modifier fa-size="[toolMenuWidth, toolMenuHeight]">
+					<fa-surface >
+						<ng-include src=" 'partials/tools.html' "></ng-include>
+		    		</fa-surface>
+	    		</fa-modifier>
+	
+				<!-- CONTENT -->
+				<fa-modifier fa-size="[contentWidth, contentHeight]" fa-translate="[toolMenuWidth,0,0]">
+		  			<fa-surface>
+		  	  			<ng-include src=" 'partials/content.html' "></ng-include>
+			  		</fa-surface>
+		  		</fa-modifier>
+	
+				<!-- ACTION MENU -->
+				<fa-modifier fa-size="[actionMenuWidth, actionMenuHeight]" fa-translate="[windowWidth - actionMenuWidth,0,0]">
+					<fa-surface>
+				  		<ng-include src=" 'partials/actions.html' "></ng-include>
+			  		</fa-surface>
+		  		</fa-modifier>
+	  		
+	  		</fa-app>
+  		</fa-surface>
 
 		<!-- FOOTER -->
 		<fa-surface>
