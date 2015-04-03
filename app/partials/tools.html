@@ -1,5 +1,6 @@
-<div ng-repeat="tool in tools">
- 	<div class="tool-content">
+<div id="tool{{tool.id}}" ng-repeat="tool in tools" ng-touchstart="tool.touchStart" ng-touchend="tool.touchEnd">
+ 	<div 	class="tool-content" 
+ 			ng-model="tools">
  		<div class="tool-title">
    			{{tool.title}}
    		</div>

@@ -3,6 +3,7 @@
 
 function Tool(t) {
 
+	this.id = t.index;
 	this.index = t.index;
 
 	this.title = t.title;
