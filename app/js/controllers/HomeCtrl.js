@@ -8,7 +8,8 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	/* Initialization */
 	/** ************* */
 
-	// var logger = Logger.getInstance('HomeCtrl');
+	var logger = Logger.getInstance('HomeCtrl');
+
 	var init = function() {
 		initTools();
 		initActions();
@@ -26,6 +27,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 		if ($scope.toolOnDrag !== null) {
 			posY = $event.originalEvent.touches[0].clientY;
 			posX = $event.originalEvent.touches[0].clientX;
+			logger.debug('touchMove : ' + (posX + deltaX) + '/' + (posY + deltaY) + '/0');
 			$scope.toolOnDrag.position = [posX + deltaX,posY + deltaY,0];
 		}
 	};
@@ -45,6 +47,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	var dragTimer = null;
 
 	var activateDragMode = function($event, t) {
+		logger.debug('activateDragMode : ' + t.title);
 		navigator.vibrate(50);
 		var position = t.position;
 		deltaX = position[0] - $event.originalEvent.touches[0].clientX;
@@ -55,7 +58,8 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	};
 
 	var animateTool = function() {
-		var position = $scope.getPosition(this.index);
+		var position = $scope.getToolPosition(this.index);
+		logger.debug('animateTool : \'' + this.title + '\' on position ' + position[0] + '/' + position[1]);
 		$('#tool' + this.id).velocity({
 			left : position[0],
 			top : position[1],
@@ -75,7 +79,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 
 	var refreshToolPosition = function(i) {
 		var isInstanciated = this instanceof Tool;
-		var position = $scope.getPosition(isInstanciated ? this.index : i);
+		var position = $scope.getToolPosition(isInstanciated ? this.index : i);
 		if (isInstanciated) {
 			this.position = position;
 		}
@@ -83,6 +87,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	};
 
 	var onTouchStartTool = function($event) {
+		logger.debug('onTouchStartTool');
 		var tool = this;
 		dragTimer = setTimeout(function() {
 			$scope.$apply(activateDragMode($event, tool));
@@ -90,6 +95,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	};
 
 	var onTouchEndTool = function() {
+		logger.debug('onTouchEndTool');
 		clearTimeout(dragTimer);
 		if ($scope.toolOnDrag !== null) {
 			$scope.toolOnDrag.animate();
@@ -120,6 +126,15 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	/* Actions menu */
 	/** *********** */
 
+	var refreshActionPosition = function(i) {
+		var isInstanciated = this instanceof Action;
+		var position = $scope.getActionPosition(isInstanciated ? this.index : i);
+		if (isInstanciated) {
+			this.position = position;
+		}
+		return position;
+	};
+
 	var initActions = function() {
 		var action;
 		var actions = [];
@@ -128,7 +143,8 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 				'index' : i,
 				'title' : ACTIONSLIST[i].title,
 				'description' : ACTIONSLIST[i].description,
-				'image' : ACTIONSLIST[i].image
+				'image' : ACTIONSLIST[i].image,
+				'refreshPosition' : refreshActionPosition
 			});
 			actions.push(action);
 		}

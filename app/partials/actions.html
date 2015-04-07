@@ -1,6 +1,12 @@
-<div ng-repeat="action in actions">
- 	<div class="action-content">
- 		<div class="action-title">
+<div 	id="action{{action.id}}" ng-repeat="action in actions" 
+		ng-touchstart="action.touchStart" 
+		ng-touchend="action.touchEnd"
+		class="{{action.classname}}"
+		style="position:absolute; -webkit-transform: matrix(1, 0, 0, 1, {{action.position[0]}}, {{action.position[1]}});">
+ 	<div 	class="action-content"
+ 			style="width:{{actionsMenuWidth}}px;height:{{actionsMenuWidth}}px">
+ 		<div 	class="action-title"
+ 				style="font-size:{{actionsMenuWidth * 0.3}}px">
    			{{action.title}}
    		</div>
    		<div class="action-image">
