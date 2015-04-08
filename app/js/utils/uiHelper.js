@@ -65,6 +65,12 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		return [x,y,1];
 	};
 
+	$rootScope.isAboveGrid = function(position) {
+		var xAboveGrid = (position[0] > $rootScope.toolsMenuWidth) && (position[0] < $rootScope.windowWidth - $rootScope.actionsMenuWidth);
+		var yAboveGrid = (position[1] > $rootScope.headerHeight) && (position[1] < $rootScope.windowHeight - $rootScope.footerHeight);
+		return xAboveGrid && yAboveGrid;
+	};
+
 	$rootScope.drawScreen();
 
 	return null;

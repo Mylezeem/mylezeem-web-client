@@ -62,9 +62,9 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 		logger.debug('animateTool : \'' + this.title + '\' on position ' + position[0] + '/' + position[1]);
 		$('#tool' + this.id).velocity({
 			left : position[0],
-			top : position[1],
+			top : position[1] + $scope.headerHeight,
 		}, {
-			duration : 750,
+			duration : 950,
 			easing : 'spring',
 			complete : function() {
 				var t = this;
@@ -98,7 +98,13 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 		logger.debug('onTouchEndTool');
 		clearTimeout(dragTimer);
 		if ($scope.toolOnDrag !== null) {
-			$scope.toolOnDrag.animate();
+			var isAboveGrid = $scope.isAboveGrid($scope.toolOnDrag.position);
+			logger.debug('is above grid : ' + isAboveGrid);
+			if (isAboveGrid) {
+
+			} else {
+				$scope.toolOnDrag.animate();
+			}
 			$scope.toolOnDrag = null;
 		}
 	};

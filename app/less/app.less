@@ -1,9 +1,17 @@
 
 @default-text-color:              #FFFFFF;
 
+
+
 * {
-    margin: 0;
-    padding: 0;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+}
+
+*[contenteditable="true"] {
+	-webkit-user-select: text;
+	outline: none;
 }
 
 html,body {
@@ -12,8 +20,10 @@ html,body {
 }
 
 body {
-	font-size: 15px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Roboto;
+	text-rendering: optimizeLegibility;
+	color: white;
+	margin: 0;
 }
 
 .page{
