@@ -1,0 +1,12 @@
+V. 0.1.0
+---------
+
+X mettre des font icon pour les tools
+X ajouter font icon 'save'
+X ajouter font icon 'info'
+- click sur bouton 'save' enregistre le JSON
+- click sur bouton 'remove' supprime toute la configuration (popup de confirmation)
+- click sur bouton 'info' popup 'fonctionnalité non disponible'
+- click sur bouton 'paramètres' popup 'fonctionnalité non disponible'
+- click sur bouton 'square' popup 'fonctionnalité non disponible'
+- click sur bouton 'circle' popup 'fonctionnalité non disponible'

@@ -29,6 +29,12 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 			posX = $event.originalEvent.touches[0].clientX;
 			logger.debug('touchMove : ' + (posX + deltaX) + '/' + (posY + deltaY) + '/0');
 			$scope.toolOnDrag.position = [posX + deltaX,posY + deltaY,0];
+			// TODO : Be careful : performances
+			if ($scope.isAboveGrid($scope.toolOnDrag.position)) {
+				$scope.toolOnDrag.classname = 'onDrag default-color';
+			} else {
+				$scope.toolOnDrag.classname = 'onDrag white-color';
+			}
 		}
 	};
 
@@ -69,7 +75,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 			complete : function() {
 				var t = this;
 				$scope.$apply(function() {
-					t.classname = 'draggable';
+					t.classname = 'white-color draggable';
 					t.clickable = true;
 					t.position = position;
 				});
@@ -117,7 +123,8 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 				'index' : i,
 				'title' : TOOLSLIST[i].title,
 				'description' : TOOLSLIST[i].description,
-				'image' : TOOLSLIST[i].image,
+				'icon' : TOOLSLIST[i].icon,
+				'classname' : 'white-color',
 				'refreshPosition' : refreshToolPosition,
 				'touchStart' : onTouchStartTool,
 				'touchEnd' : onTouchEndTool,
@@ -132,15 +139,6 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	/* Actions menu */
 	/** *********** */
 
-	var refreshActionPosition = function(i) {
-		var isInstanciated = this instanceof Action;
-		var position = $scope.getActionPosition(isInstanciated ? this.index : i);
-		if (isInstanciated) {
-			this.position = position;
-		}
-		return position;
-	};
-
 	var initActions = function() {
 		var action;
 		var actions = [];
@@ -149,8 +147,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 				'index' : i,
 				'title' : ACTIONSLIST[i].title,
 				'description' : ACTIONSLIST[i].description,
-				'image' : ACTIONSLIST[i].image,
-				'refreshPosition' : refreshActionPosition
+				'image' : ACTIONSLIST[i].image
 			});
 			actions.push(action);
 		}

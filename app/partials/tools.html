@@ -5,12 +5,8 @@
 		style="position:absolute; -webkit-transform: matrix(1, 0, 0, 1, {{tool.position[0]}}, {{tool.position[1]}});">
  	<div 	class="tool-content" 
  			style="width:{{toolsMenuWidth}}px;height:{{toolsMenuWidth}}px">
- 		<div 	class="tool-title"
- 				style="font-size:{{toolsMenuWidth * 0.3}}px">
-   			{{tool.title}}
-   		</div>
    		<div class="tool-image">
-  				<img src="{{tool.image}}" alt="{{tool.description}}" style="width:{{toolsMenuWidth * 0.8}}px;height:{{toolsMenuWidth * 0.8}}px">
+   			<div class="icon-{{tool.icon}} fright"></div>
    		</div>
    	</div>
 </div>

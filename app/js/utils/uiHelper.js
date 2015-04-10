@@ -36,21 +36,15 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		$rootScope.headerHeight = Math.floor(headerHeight);
 		$rootScope.footerHeight = Math.floor(footerHeight);
 
-		// Action / Tool menus
+		// Tool menus
 		var toolMenuWidth = UICONFIG.STANDARD_TOOL_MENU_WIDTH;
-		var actionMenuWidth = UICONFIG.STANDARD_ACTION_MENU_WIDTH;
 		if ($rootScope.windowWidth < UICONFIG.MIN_WINDOW_WIDTH_AS_STANDARD) {
 			toolMenuWidth = $rootScope.windowWidth * UICONFIG.SMALL_TOOL_MENU_WIDTH_PERCENT / 100;
 			if (toolMenuWidth < UICONFIG.TOOL_MENU_MIN_WIDTH) {
 				toolMenuWidth = UICONFIG.TOOL_MENU_MIN_WIDTH;
 			}
-			actionMenuWidth = $rootScope.windowWidth * UICONFIG.SMALL_ACTION_MENU_WIDTH_PERCENT / 100;
-			if (actionMenuWidth < UICONFIG.ACTION_MENU_MIN_WIDTH) {
-				actionMenuWidth = UICONFIG.ACTION_MENU_MIN_WIDTH;
-			}
 		}
 		$rootScope.toolsMenuWidth = Math.floor(toolMenuWidth);
-		$rootScope.actionsMenuWidth = Math.floor(actionMenuWidth);
 	};
 
 	$rootScope.getToolPosition = function(i) {
@@ -59,14 +53,8 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		return [x,y,1];
 	};
 
-	$rootScope.getActionPosition = function(i) {
-		var x = 0;
-		var y = i * ($rootScope.actionsMenuWidth + UICONFIG.ACTION_MENU_MARGIN_HEIGHT);
-		return [x,y,1];
-	};
-
 	$rootScope.isAboveGrid = function(position) {
-		var xAboveGrid = (position[0] > $rootScope.toolsMenuWidth) && (position[0] < $rootScope.windowWidth - $rootScope.actionsMenuWidth);
+		var xAboveGrid = (position[0] > $rootScope.toolsMenuWidth);
 		var yAboveGrid = (position[1] > $rootScope.headerHeight) && (position[1] < $rootScope.windowHeight - $rootScope.footerHeight);
 		return xAboveGrid && yAboveGrid;
 	};

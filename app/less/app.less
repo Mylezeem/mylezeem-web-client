@@ -1,7 +1,5 @@
 
-@default-text-color:              #FFFFFF;
-
-
+@default-text-color:              #333333;
 
 * {
 	box-sizing: border-box;
@@ -39,54 +37,102 @@ body {
 	z-index: 20;
 }
 
+.fleft {
+	float: left;
+}
+
+.fright {
+	float: right;
+}
+
+.white-color {
+	color: white;
+}
+
+.default-color {
+	color: @default-text-color;
+}
+
+#header {
+	#main-header {
+		width: 100%;
+		#color-square {
+			height: 100%;
+			background-color: #3286C7;
+		}
+		#app-icon {
+			margin-left: 0.5em;
+			height: 100%;
+		}
+		#app-title {
+			margin-left: 0.5em;
+			height: 100%;
+			color: @default-text-color;
+			font-weight: bold;
+		}
+		#icon-info {
+			font-size: 1em;
+  			padding: 0.2em;
+		}
+		#icon-config {
+			font-size: 1em;
+  			padding: 0.2em;
+		}
+	}
+	#actions-menu {
+		width: 100%;
+		background-color: #3286C7;
+		color: white;
+		#icon-save {
+			font-size: 1em;
+  			padding: 0.2em;
+		}
+		#icon-remove {
+			font-size: 1em;
+  			padding: 0.2em;
+		}
+		.action {
+			height: 100%;
+  			padding: 0.2em;
+  			img {
+  				height: 100%;
+  			}
+		}
+	}
+}
+
 #home {
 	display: table;
 	height: 100%;
 	width: 100%;
 	#header {
 		display: table-row;
-		background-color: #184677;
 	}
 	#footer {
 		display: table-row;
-		background-color: #184677;	
+		background-color: #184677;
+		#copyright {
+			color: white;
+			font-size: 0.8em;
+			padding: 0.5em;
+		}
 	}
 	#content {
 		display: table;
 		height: 100%;
 		width: 100%;
-		background-color: #C7DAEA;
+		background-color: white;
 		#tools-menu {
 			display: table-cell;
 			height: 100%;
-			background-color: #3286C7;
+			background-color: @default-text-color;
 			.tool-content {
-				background-color: #5194C6;
-				.tool-title {
-					text-align: center;
-					height: 30%;
-				}
 				.tool-image {
 					width: 100%;
-					height: 70%;
+					height: 100%;
 					text-align: center;
-				}
-			}
-		}
-		#actions-menu {
-			display: table-cell;
-			height: 100%;
-			background-color: #3286C7;
-			.action-content {
-				background-color: #5194C6;
-				.action-title {
-					text-align: center;
-					height: 30%;
-				}
-				.action-image {
-					width: 100%;
-					height: 70%;
-					text-align: center;
+					padding: 0.2em;
+					font-size: 2em;
 				}
 			}
 		}

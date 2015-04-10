@@ -1,5 +1,5 @@
 'use strict';
-/* exported Tool */
+/* exported Tool, addClassname */
 
 function Tool(t) {
 
@@ -8,7 +8,7 @@ function Tool(t) {
 
 	this.title = t.title;
 	this.description = t.description;
-	this.image = t.image;
+	this.icon = t.icon;
 
 	this.classname = t.classname;
 

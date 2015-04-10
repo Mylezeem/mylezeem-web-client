@@ -1,1 +1,24 @@
-Header
+<div id="main-header" style="height:{{headerHeight / 2}}px;">
+
+	<div id="color-square" class="fleft" style="width:{{toolsMenuWidth}}px;"></div>
+	<img id="app-icon" class="fleft" src="img/app-icon.png"/>
+	<div id="app-title" class="fleft">Mylezeem</div>
+	
+	<div id="icon-config" class="icon-cog fright"></div>
+	<div id="icon-info" class="icon-info fright"></div>
+	
+</div>
+
+<div id="actions-menu" style="height:{{headerHeight / 2}}px;">
+
+	<div class="fleft" style="width:{{toolsMenuWidth}}px;height:100%;"></div>
+	
+	<div 	id="action{{action.id}}" ng-repeat="action in actions" 
+			class="action fleft">
+		<img src="{{action.image}}" alt="{{action.title}}" >
+	</div>
+	
+	<div id="icon-save" class="icon-floppy-disk fright"></div>
+	<div id="icon-remove" class="icon-bin fright"></div>
+	
+</div>
