@@ -12,10 +12,13 @@
 		<!-- endbuild -->
 		<link rel="stylesheet" href="css/merges.css">
 	</head>
-	<body onload="onLoad()">
+	<body onload="onLoad()" ng-controller="ParentCtrl">
 	
 		<!-- CONTENT -->
 		<div ng-view class="page"></div>
+		
+		<!-- POPOVER -->
+		<ng-include src="'partials/common/popover.html'" ng-if="popover"></ng-include>
 		
 		<!-- LOADING SPINNER -->
 		<div id="loading-ws-bar"></div>

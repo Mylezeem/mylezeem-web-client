@@ -29,12 +29,57 @@ body {
     color: @default-text-color;
 }
 
-.draggable {
-	z-index: 10;
+/* COLOR */
+
+.white-color {
+	color: white;
 }
 
-.onDrag {
-	z-index: 20;
+.default-color {
+	color: @default-text-color;
+}
+
+/* FONT */
+
+.italic {
+	font-style: italic;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.medium {
+	font-weight: 300;
+}
+
+.light {
+	font-weight: 100;
+}
+
+.textAlignCenter {
+	text-align: center;
+}
+
+/* SIZE */
+
+.full {
+	width: 100%;
+	height: 100%;
+}
+
+/* ALIGN */
+
+.center {
+	text-align: center;
+}
+
+.valign {
+	vertical-align: middle;
+}
+
+.talign {
+	vertical-align: top;
 }
 
 .fleft {
@@ -45,13 +90,34 @@ body {
 	float: right;
 }
 
-.white-color {
-	color: white;
+/* TABLE */
+
+.table {
+	width: 100%;
+	display: table;
+	line-height: 0;
 }
 
-.default-color {
-	color: @default-text-color;
+.row {
+	display: table-row;
 }
+
+.cell {
+	display: table-cell;
+	line-height: 0;
+}
+
+/* DRAG AND DROP */
+
+.draggable {
+	z-index: 10;
+}
+
+.onDrag {
+	z-index: 20;
+}
+
+/* HEADER */
 
 #header {
 	#main-header {

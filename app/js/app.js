@@ -7,7 +7,7 @@ var controllers = angular.module('mylezeem.controllers', []);
 var services = angular.module('mylezeem.services', []);
 var providers = angular.module('mylezeem.providers', []);
 
-angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem.directives','mylezeem.providers','ngRoute'])
+angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem.directives','mylezeem.providers','ngRoute','ngSanitize'])
 
 .config(['$routeProvider','$httpProvider','LoggerProvider',function($routeProvider, $httpProvider, LoggerProvider) {
 	// Enable/Disable logs
@@ -28,4 +28,6 @@ angular.module('mylezeem', ['mylezeem.services','mylezeem.controllers','mylezeem
 	});
 }]).run(function($rootScope, $location, LocalStorageHelper) {
 	FastClick.attach(document.body);
+}).filter('unsafe', function($sce) {
+	return $sce.trustAsHtml;
 });

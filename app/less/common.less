@@ -1,0 +1,56 @@
+#popover {
+	z-index:2000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	hr {
+		margin: 0.2em 0;
+	}
+
+	.cell {
+		text-align: center;
+		vertical-align: middle;
+		.content {
+			font-size: 36%;
+			max-width: 70%;
+			display: inline-block;
+			background-color: #555;
+			padding: 0.4em;
+			border-radius: 0.4em;
+			.message {
+				font-size: 35%;
+			}
+
+			.actions {
+				font-size: 80%;
+				margin-top: 0.25em;
+				span {
+					padding: 0.25em;
+				}
+
+				.button {
+					display: inline-block;
+					padding: 4%;
+				}
+
+				.title {
+					font-size: 35%;
+					margin-top: 1%;
+				}
+			}
+
+			.modal {
+				line-height: 1;
+				margin: auto;
+				display: table;
+				margin-top: 0.4em;
+				> .cell {
+					padding: 0 0.1em;
+				}
+			}
+		}
+	}
+}

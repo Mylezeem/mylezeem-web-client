@@ -1,0 +1,28 @@
+<div id="popover" style="width:{{windowWidth}}px; height:{{windowHeight}}px; font-size:125px">
+	<div class="table full">
+		<div class="cell full">
+			<div class="content">
+				<div class="message" ng-if="popover.message" ng-bind-html="popover.message"></div>
+
+				<hr ng-repeat-start="action in popover.actions" ng-if="$first" />
+				<div class="message" ng-click="action.action()" ng-bind-html="action.text"></div>
+				<hr ng-repeat-end />
+				
+				<div class="actions" ng-if="popover.buttons">
+					<div ng-repeat="button in popover.buttons" ng-click="button.action()" class="button" style="display: inline-block">
+						<div class="icon-{{button.icon}}"></div>
+						<div class="title" ng-if="button.title != null">{{button.title}}</div>
+					</div>
+				</div>
+				<div class="modal">
+					<div class="cell" ng-if="popover.confirmCallback">
+						<span class="custom-icon-ok" ng-click="popover.confirmCallback(); closePopover()"></span>
+					</div>
+					<div class="cell">
+						<span class="icon-cancel-circle" ng-click="popover.cancelCallback(); closePopover()"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

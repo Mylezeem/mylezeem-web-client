@@ -1,14 +1,19 @@
 'use strict';
-/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, CONFIG */
+/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, CONFIG, LABELS */
 
 /* Home Controllers */
-controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope, UiHelper, Logger) {
+controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller',function($scope, UiHelper, Logger, $controller) {
 
 	/** ************* */
 	/* Initialization */
 	/** ************* */
 
 	var logger = Logger.getInstance('HomeCtrl');
+
+	// instantiate parent controller :: extends
+	$controller('ParentCtrl', {
+		$scope : $scope
+	});
 
 	var init = function() {
 		initTools();
@@ -41,6 +46,36 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger',function($scope
 	/** ************* */
 	/* Events Methods */
 	/** ************* */
+
+	$scope.onClickConfigButton = function() {
+		$scope.$emit('showPopover', {
+			message : LABELS.POPOVER_NOT_IMPLEMENTED
+		});
+	};
+
+	$scope.onClickInfoButton = function() {
+		$scope.$emit('showPopover', {
+			message : LABELS.POPOVER_NOT_IMPLEMENTED
+		});
+	};
+
+	$scope.onClickSaveButton = function() {
+		$scope.$emit('showPopover', {
+			message : LABELS.POPOVER_NOT_IMPLEMENTED
+		});
+	};
+
+	$scope.onClickDeleteButton = function() {
+		$scope.$emit('showPopover', {
+			message : LABELS.POPOVER_NOT_IMPLEMENTED
+		});
+	};
+
+	$scope.onClickActionButton = function(actionId) {
+		$scope.$emit('showPopover', {
+			message : LABELS.POPOVER_NOT_IMPLEMENTED
+		});
+	};
 
 	/** ********* */
 	/* Tools menu */

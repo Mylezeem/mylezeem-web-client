@@ -4,8 +4,8 @@
 	<img id="app-icon" class="fleft" src="img/app-icon.png"/>
 	<div id="app-title" class="fleft">Mylezeem</div>
 	
-	<div id="icon-config" class="icon-cog fright"></div>
-	<div id="icon-info" class="icon-info fright"></div>
+	<div id="icon-config" class="icon-cog fright" ng-click="onClickConfigButton()"></div>
+	<div id="icon-info" class="icon-info fright" ng-click="onClickInfoButton()"></div>
 	
 </div>
 
@@ -14,11 +14,11 @@
 	<div class="fleft" style="width:{{toolsMenuWidth}}px;height:100%;"></div>
 	
 	<div 	id="action{{action.id}}" ng-repeat="action in actions" 
-			class="action fleft">
+			class="action fleft" ng-click="onClickActionButton(action.id)">
 		<img src="{{action.image}}" alt="{{action.title}}" >
 	</div>
 	
-	<div id="icon-save" class="icon-floppy-disk fright"></div>
-	<div id="icon-remove" class="icon-bin fright"></div>
+	<div id="icon-save" class="icon-floppy-disk fright" ng-click="onClickSaveButton()"></div>
+	<div id="icon-remove" class="icon-bin fright" ng-click="onClickDeleteButton()"></div>
 	
 </div>
