@@ -1,8 +1,8 @@
 'use strict';
-/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, CONFIG, LABELS */
+/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, LABELS */
 
 /* Home Controllers */
-controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller',function($scope, UiHelper, Logger, $controller) {
+controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','$filter',function($scope, UiHelper, Logger, $controller, $filter) {
 
 	/** ************* */
 	/* Initialization */
@@ -26,21 +26,6 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller',f
 
 	$scope.onResize = function() {
 		$scope.drawScreen();
-	};
-
-	$scope.touchMove = function($event) {
-		if ($scope.toolOnDrag !== null) {
-			posY = $event.originalEvent.touches[0].clientY;
-			posX = $event.originalEvent.touches[0].clientX;
-			logger.debug('touchMove : ' + (posX + deltaX) + '/' + (posY + deltaY) + '/0');
-			$scope.toolOnDrag.position = [posX + deltaX,posY + deltaY,0];
-			// TODO : Be careful : performances
-			if ($scope.isAboveGrid($scope.toolOnDrag.position)) {
-				$scope.toolOnDrag.classname = 'onDrag default-color';
-			} else {
-				$scope.toolOnDrag.classname = 'onDrag white-color';
-			}
-		}
 	};
 
 	/** ************* */
@@ -81,43 +66,6 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller',f
 	/* Tools menu */
 	/** ********* */
 
-	var deltaX, deltaY, posX, posY;
-
-	$scope.toolOnDrag = null;
-
-	var dragTimer = null;
-
-	var activateDragMode = function($event, t) {
-		logger.debug('activateDragMode : ' + t.title);
-		navigator.vibrate(50);
-		var position = t.position;
-		deltaX = position[0] - $event.originalEvent.touches[0].clientX;
-		deltaY = position[1] - $event.originalEvent.touches[0].clientY;
-		$scope.toolOnDrag = t;
-		$scope.toolOnDrag.classname = 'onDrag';
-		$scope.toolOnDrag.position = [position[0],position[1]];
-	};
-
-	var animateTool = function() {
-		var position = $scope.getToolPosition(this.index);
-		logger.debug('animateTool : \'' + this.title + '\' on position ' + position[0] + '/' + position[1]);
-		$('#tool' + this.id).velocity({
-			left : position[0],
-			top : position[1] + $scope.headerHeight,
-		}, {
-			duration : 950,
-			easing : 'spring',
-			complete : function() {
-				var t = this;
-				$scope.$apply(function() {
-					t.classname = 'white-color draggable';
-					t.clickable = true;
-					t.position = position;
-				});
-			}.bind(this)
-		});
-	};
-
 	var refreshToolPosition = function(i) {
 		var isInstanciated = this instanceof Tool;
 		var position = $scope.getToolPosition(isInstanciated ? this.index : i);
@@ -127,47 +75,55 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller',f
 		return position;
 	};
 
-	var onTouchStartTool = function($event) {
-		logger.debug('onTouchStartTool');
-		var tool = this;
-		dragTimer = setTimeout(function() {
-			$scope.$apply(activateDragMode($event, tool));
-		}, CONFIG.TIME_TO_DRAG);
-	};
-
-	var onTouchEndTool = function() {
-		logger.debug('onTouchEndTool');
-		clearTimeout(dragTimer);
-		if ($scope.toolOnDrag !== null) {
-			var isAboveGrid = $scope.isAboveGrid($scope.toolOnDrag.position);
-			logger.debug('is above grid : ' + isAboveGrid);
-			if (isAboveGrid) {
-
-			} else {
-				$scope.toolOnDrag.animate();
-			}
-			$scope.toolOnDrag = null;
-		}
-	};
-
 	var initTools = function() {
+
+		// Init template tools
+
 		var tool;
 		var tools = [];
 		for (var i = 0; i < TOOLSLIST.length; i++) {
 			tool = new Tool({
+				'id' : i,
 				'index' : i,
 				'title' : TOOLSLIST[i].title,
 				'description' : TOOLSLIST[i].description,
 				'icon' : TOOLSLIST[i].icon,
 				'classname' : 'white-color',
-				'refreshPosition' : refreshToolPosition,
-				'touchStart' : onTouchStartTool,
-				'touchEnd' : onTouchEndTool,
-				'animate' : animateTool
+				'position' : $scope.getToolPosition(i)
 			});
 			tools.push(tool);
 		}
 		$scope.tools = tools;
+
+		// Init selected tool elements
+
+		$scope.toolElements = [];
+	};
+
+	$scope.onClickTool = function(toolIdx) {
+
+		var elem;
+
+		elem = new Tool({
+			'id' : toolIdx + '-' + $filter('date')(new Date(), 'yyyyMMddsss'),
+			'index' : toolIdx,
+			'title' : TOOLSLIST[toolIdx].title,
+			'description' : TOOLSLIST[toolIdx].description,
+			'icon' : TOOLSLIST[toolIdx].icon,
+			'classname' : 'default-color',
+			'position' : $scope.getToolElementPosition()
+		});
+
+		logger.debug('onClickTool : create tool ' + elem.id);
+
+		$scope.toolElements.push(elem);
+	};
+
+	$scope.onDropTool = function(data, event) {
+		var toolElem = $filter('filter')($scope.toolElements, function(d) {
+			return d.id === data['json/tool'].id;
+		})[0];
+		toolElem.position = [event.offsetX,event.offsetY,1];
 	};
 
 	/** *********** */

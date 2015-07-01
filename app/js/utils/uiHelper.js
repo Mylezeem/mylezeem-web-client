@@ -53,6 +53,12 @@ services.factory('UiHelper', ['$rootScope','$location','$window',function($rootS
 		return [x,y,1];
 	};
 
+	$rootScope.getToolElementPosition = function() {
+		var x = $rootScope.headerHeight + 20;
+		var y = $rootScope.toolsMenuWidth + UICONFIG.TOOL_MENU_MARGIN_HEIGHT;
+		return [x,y,1];
+	};
+
 	$rootScope.isAboveGrid = function(position) {
 		var xAboveGrid = (position[0] > $rootScope.toolsMenuWidth);
 		var yAboveGrid = (position[1] > $rootScope.headerHeight) && (position[1] < $rootScope.windowHeight - $rootScope.footerHeight);

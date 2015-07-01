@@ -1,6 +1,7 @@
-<div 	id="tool{{tool.id}}" ng-repeat="tool in tools" 
+<div 	id="tool-{{tool.id}}" ng-repeat="tool in tools" 
 		ng-touchstart="tool.touchStart" 
 		ng-touchend="tool.touchEnd"
+		ng-click="onClickTool(tool.index)"
 		class="{{tool.classname}} draggable"
 		style="position:absolute; -webkit-transform: matrix(1, 0, 0, 1, {{tool.position[0]}}, {{tool.position[1]}});">
  	<div 	class="tool-content" 

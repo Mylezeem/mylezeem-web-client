@@ -1,3 +1,14 @@
-<div data-drop="true" data-jqyoui-options={{dropOptions}} jqyoui-droppable={{dropDroppable}}>
-Content
+<div id="droppable-content" drop="onDropTool($data, $event)" drop-effect="move" drop-accept="'json/tool'">
+	Content
+	<div 	id="tool-elem-{{toolElem.id}}" ng-repeat="toolElem in toolElements" 
+			draggable="true" effect-allowed="move" draggable-type="tool" draggable-data="{{toolElem}}"
+			class="{{toolElem.classname}} draggable"
+			style="position:absolute; -webkit-transform: matrix(1, 0, 0, 1, {{toolElem.position[0]}}, {{toolElem.position[1]}});">
+	 	<div 	class="tool-elem-content" 
+	 			style="width:{{toolsMenuWidth}}px;height:{{toolsMenuWidth}}px">
+	   		<div class="tool-image">
+	   			<div class="icon-{{toolElem.icon}} fright"></div>
+	   		</div>
+	   	</div>
+	</div>
 </div>
