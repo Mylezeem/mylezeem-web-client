@@ -119,6 +119,7 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','
 		$scope.toolElements.push(elem);
 	};
 
+	/* From https://www.npmjs.com/package/angular-draganddrop lib */
 	$scope.onDropTool = function(data, event) {
 		var toolElem = $filter('filter')($scope.toolElements, function(d) {
 			return d.id === data['json/tool'].id;

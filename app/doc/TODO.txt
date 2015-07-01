@@ -10,5 +10,13 @@ X click sur bouton 'square' popup 'fonctionnalité non disponible'
 X click sur bouton 'circle' popup 'fonctionnalité non disponible'
 - click sur bouton 'save' enregistre le JSON
 - click sur bouton 'remove' supprime toute la configuration (popup de confirmation)
-- [B] au drag and drop des tools, la couleur ne change pas au bon moment
-- [B] le drag and drop ne fonctionne pas en mode navigateur standard
+- fixer les tailles des icones 'tool' et 'toolElem'
+- [E] changer la couleur des icones dragging
+
+
+Legend :
+---------
+
+[B] : Bug
+[E] : Evolution
+    : Mandatory functionality
