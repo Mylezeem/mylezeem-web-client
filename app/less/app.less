@@ -192,13 +192,17 @@ body {
 			display: table-cell;
 			height: 100%;
 			background-color: @default-text-color;
-			.tool-content, .tool-elem-content {
+			.tool-content {
 				.tool-image {
 					width: 100%;
 					height: 100%;
 					text-align: center;
 					padding: 0.2em;
-					font-size: 2em;
+					font-size: 3em;
+					.icon {
+						width: 100%;
+						height: 100%;
+					}
 				}
 			}
 		}
@@ -208,6 +212,19 @@ body {
 			#droppable-content {
 				width: 100%;
 				height: 100%;
+			}
+			.tool-elem-content {
+				.tool-image {
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					padding: 0.2em;
+					font-size: 3em;
+					.icon {
+						width: 100%;
+						height: 100%;
+					}
+				}
 			}
 		}
 	}

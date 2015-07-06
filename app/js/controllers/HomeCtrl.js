@@ -1,8 +1,8 @@
 'use strict';
-/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, LABELS */
+/* global controllers, TOOLSLIST, Tool, ACTIONSLIST, Action, LABELS, UICONFIG */
 
 /* Home Controllers */
-controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','$filter',function($scope, UiHelper, Logger, $controller, $filter) {
+controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','$filter','$rootScope',function($scope, UiHelper, Logger, $controller, $filter, $rootScope) {
 
 	/** ************* */
 	/* Initialization */
@@ -66,15 +66,6 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','
 	/* Tools menu */
 	/** ********* */
 
-	var refreshToolPosition = function(i) {
-		var isInstanciated = this instanceof Tool;
-		var position = $scope.getToolPosition(isInstanciated ? this.index : i);
-		if (isInstanciated) {
-			this.position = position;
-		}
-		return position;
-	};
-
 	var initTools = function() {
 
 		// Init template tools
@@ -124,7 +115,11 @@ controllers.controller('HomeCtrl', ['$scope','UiHelper','Logger','$controller','
 		var toolElem = $filter('filter')($scope.toolElements, function(d) {
 			return d.id === data['json/tool'].id;
 		})[0];
-		toolElem.position = [event.offsetX,event.offsetY,1];
+		// posX = pageX - toolsMenu width - tool item width
+		var posX = event.pageX - $rootScope.toolsMenuWidth - (UICONFIG.STANDARD_TOOL_MENU_WIDTH / 2);
+		// posY = pageY - header height - tool item height
+		var posY = event.pageY - $rootScope.headerHeight - (UICONFIG.STANDARD_TOOL_MENU_WIDTH / 2);
+		toolElem.position = [posX,posY,1];
 	};
 
 	/** *********** */
